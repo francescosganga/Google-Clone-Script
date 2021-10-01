@@ -1,8 +1,8 @@
 <?php
 ob_start();
 
-include('classes/parser.php');
-include('config/config.php');
+include('../classes/parser.php');
+include('../config/config.php');
 
 $alreadyCrawled = array();
 $crawling = array();
