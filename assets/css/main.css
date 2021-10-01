@@ -1795,6 +1795,10 @@ span.flatpickr-weekday {
   }
 }
 
+.search-results {
+  display: flex;
+}
+
 .results-div {
   border-bottom: 1px solid #333;
   padding: 10px 0;

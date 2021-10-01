@@ -22,6 +22,7 @@ if (!isset($_GET['q']) || $_GET['q'] == NULL) {
 		</div>
 	</form>
 	<!-- results -->
+	<div class="search-results">
 	<div class="result-showing-div">
 		<?php
 		$search_query = $_GET['q'];
@@ -125,6 +126,10 @@ if (!isset($_GET['q']) || $_GET['q'] == NULL) {
 		}
 		?>
 
+	</div>
+	<div class="sidebar">
+		b
+	</div>
 	</div>
 
 	<?php
