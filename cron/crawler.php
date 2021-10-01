@@ -36,8 +36,8 @@ function insertLink($url, $title, $description, $keywords, $clicks = 0)
 {
 	global $con;
 
-	$query = $con->prepare("INSERT INTO sites (url, title, description, keywords, clicks)
-    						VALUES (:url, :title, :description, :keywords, :clicks)");
+	$query = $con->prepare("INSERT INTO sites (url, title, description, keywords, clicks, crawled)
+    						VALUES (:url, :title, :description, :keywords, :clicks, 1)");
 
 	$query->bindParam(':url', $url);
 	$query->bindParam(':title', $title);
