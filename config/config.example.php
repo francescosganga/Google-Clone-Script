@@ -1,7 +1,8 @@
 <?php 
 ob_start();
 $config = [
-	'name' => '<?= $config['name'] ?>',
+	'name' => 'voogle',
+	'subdirectory' => 'voogle',
 	'mysql' => [
 		'host' => 'localhost',
 		'user' => 'root',
