@@ -1,4 +1,4 @@
-<?php include('helpers/url_helpers.php');?>
+<?php include("config/config.php"); include('helpers/url_helpers.php'); ?>
 
 <!doctype html>
 <html lang="en">
@@ -7,14 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="<?=project_url('/assets/images/icon/icon.png');?>">
-
-    <script type="text/javascript" src="<?=project_url('/assets/js/jquery/jquery-3.4.1.slim.min.js');?>"></script>
-
-    <link rel="stylesheet" type="text/css" href="<?=project_url('/assets/css/index-page.css');?>">
-    <link rel="stylesheet" type="text/css" href="<?=project_url('/assets/css/index-mediaquery.css');?>">
-    <link rel="stylesheet" type="text/css" href="<?=project_url('/assets/fonts/fontawesome/css/all.css');?>">
-
-    <title>Voogle</title>
+    <title><?= $config['name'] ?></title>
   </head>
   <body>
 

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="<?=project_url('/assets/css/index-page.css');?>">
     <link rel="stylesheet" type="text/css" href="<?=project_url('/assets/fonts/fontawesome/css/all.css');?>">
 
-    <title>Voogle</title>
+    <title><?= $config['name'] ?></title>
   </head>
   <body>
 

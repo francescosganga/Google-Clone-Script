@@ -1,12 +1,11 @@
 <?php
-
-function project_url($path = NULL)
-{	
+include("../config/config.php");
+function project_url($path = NULL) {
+	global $config;	
 	if (substr($path,0,1) == "/") {
 		$path = substr_replace($path,"",0,1);
 	}
-	return "https://".$_SERVER['HTTP_HOST'] . "/voogle" . "/" . $path;
+	if($config['subdirectory'] === '')
+		return "https://".$_SERVER['HTTP_HOST'] . "/" . $path;
+	return "https://{$_SERVER['HTTP_HOST']}/{$config['subdirectory']}/{$path}";
 }
-
-// --------------------------------------------------------------
-
