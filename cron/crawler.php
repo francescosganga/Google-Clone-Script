@@ -220,4 +220,5 @@ function followLinks($url)
 
 
 $query = $con->query("SELECT * FROM sites WHERE crawled = 0");
-var_dump($query->fetch());
+while($r = $query->fetch())
+	followLinks($r['url']);
