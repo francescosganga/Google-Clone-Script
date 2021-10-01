@@ -14,6 +14,7 @@ html {
  */
 body {
   margin: 0;
+  font-Family: Poppins;
 }
 
 /**
@@ -1512,7 +1513,7 @@ span.flatpickr-weekday {
   box-sizing: border-box;
 }
 
-.s002 {
+.s002.hp {
   min-height: 100vh;
   display: -ms-flexbox;
   display: flex;
@@ -1524,6 +1525,9 @@ span.flatpickr-weekday {
   background: url("../images/Searchs_002.png");
   background-size: cover;
   background-position: center center;
+}
+
+.s002 {
   padding: 15px;
 }
 
@@ -1791,3 +1795,7 @@ span.flatpickr-weekday {
   }
 }
 
+.results-div {
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+}

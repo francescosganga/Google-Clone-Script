@@ -3,7 +3,7 @@
 	include('helpers/url_helpers.php');
 	include("layout/header.php");
 ?>
-<div class="s002">
+<div class="s002 hp">
 	<form action="search" method="GET">
 		<fieldset>
 			<legend>BROWSE THE WEB</legend>
