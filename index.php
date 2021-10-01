@@ -60,7 +60,7 @@
   	<form action="search" method="get">
   		<div class="search-bar-div">
   			<div class="input-box-div">
-  				<input type="text" name="q" class="input-box" placeholder="What's on your mind...">
+  				<input autocomplete="off" type="text" name="q" class="input-box" placeholder="What's on your mind...">
   			</div>
   			<div class="search-btn-div">
   				<button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
