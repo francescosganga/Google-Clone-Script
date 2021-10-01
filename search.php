@@ -117,7 +117,6 @@ if (!isset($_GET['q']) || $_GET['q'] == NULL) {
 				$_SESSION['resultsArraySession'] = array_slice($resultsArray, 20);
 
 				echo '
-					</div>
 					<div class="load-more-div">
 						<button class="load-more-btn" id="load-web-btn"> <i class="fas fa-angle-double-down"></i> Load More </button>
 					</div>
