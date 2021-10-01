@@ -14,7 +14,7 @@ if (!isset($_GET['q']) || $_GET['q'] == NULL) {
 	<form action="search" method="GET">
 		<div class="inner-form">
 			<div class="input-field first-wrap">
-				<input autocomplete="off" id="search" type="text" name="q" placeholder="What are you looking for?" />
+				<input autocomplete="off" id="search" type="text" name="q" placeholder="What are you looking for?" value="<?= $_GET['q'] ?>" />
 			</div>
 			<div class="input-field fifth-wrap">
 				<button class="btn-search" type="submit">SEARCH</button>
