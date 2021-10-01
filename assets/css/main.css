@@ -1825,6 +1825,17 @@ span.flatpickr-weekday {
   padding-bottom: 5px;
 }
 
+.load-more-div {
+  margin-top: 20px;
+}
+
+.load-more-div button {
+  border-radius: 0;
+  border: 0;
+  background: #969696;
+  color: #333;
+}
+
 .results-div .web-description {
   font-size: 12px;
 }
