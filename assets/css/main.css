@@ -1798,6 +1798,7 @@ span.flatpickr-weekday {
 .results-div {
   border-bottom: 1px solid #333;
   padding: 10px 0;
+  width: 50%;
 }
 
 .results-div a:not(.title-link), .results-div a:not(.title-link):hover, .results-div a:not(.title-link):visited {
