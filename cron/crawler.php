@@ -32,23 +32,23 @@ function checkExitsImages($src)
 	return $query->rowCount() != 0;
 }
 
-function insertLink($url,$title,$description,$keywords,$clicks=0)
+function insertLink($url, $title, $description, $keywords, $clicks = 0)
 {
 	global $con;
 
 	$query = $con->prepare("INSERT INTO sites (url, title, description, keywords, clicks)
     						VALUES (:url, :title, :description, :keywords, :clicks)");
 
-    $query->bindParam(':url', $url);
-    $query->bindParam(':title', $title);
-    $query->bindParam(':description', $description);
-    $query->bindParam(':keywords', $keywords);
-    $query->bindParam(':clicks', $clicks);
+	$query->bindParam(':url', $url);
+	$query->bindParam(':title', $title);
+	$query->bindParam(':description', $description);
+	$query->bindParam(':keywords', $keywords);
+	$query->bindParam(':clicks', $clicks);
 
-    return $query->execute();
+	return $query->execute();
 }
 
-function insertImages($src,$site_url,$alt,$title = "")
+function insertImages($src, $site_url, $alt, $title = "")
 {
 	global $con;
 	$clicks = 0;
@@ -56,70 +56,62 @@ function insertImages($src,$site_url,$alt,$title = "")
 	$query = $con->prepare("INSERT INTO images(src, site_url, alt, title, clicks) 
 							VALUES (:src,:site_url,:alt,:title, :clicks)");
 
-    $query->bindParam(':src', $src);
-    $query->bindParam(':site_url', $site_url);
-    $query->bindParam(':alt', $alt);
-    $query->bindParam(':title', $title);
-    $query->bindParam(':clicks', $clicks);
+	$query->bindParam(':src', $src);
+	$query->bindParam(':site_url', $site_url);
+	$query->bindParam(':alt', $alt);
+	$query->bindParam(':title', $title);
+	$query->bindParam(':clicks', $clicks);
 
-    return $query->execute();
+	return $query->execute();
 }
 
-function createLink($href,$url)
-{	
+function createLink($href, $url)
+{
 	$scheme = parse_url($url)['scheme']; // http or https
 	$host = parse_url($url)['host']; // www.w3schools.com
 
 	if (substr($href, 0, 2) == "//") {
-		$href = "http" . ":" . $href; 
-	}
-	else if (substr($href, 0, 1) == "/") {
-		$href = $scheme . "://" . $host . $href; 
-	}
-	else if (substr($href, 0, 3) == "../") {
-		$href = $scheme . "://" . $host . "/" . $href; 
-	}
-	else if (substr($href, 0, 2) == "./") {
-		$href = $scheme . "://" . $host . dirname(parse_url($url)['path']) . substr($href, 1); 
-	}
-	else if ((substr($href, 0, 5) != "https") && (substr($href, 0, 4) != "http")) {
-		$href = $scheme . "://" . $host . "/" . $href; 
+		$href = "http" . ":" . $href;
+	} else if (substr($href, 0, 1) == "/") {
+		$href = $scheme . "://" . $host . $href;
+	} else if (substr($href, 0, 3) == "../") {
+		$href = $scheme . "://" . $host . "/" . $href;
+	} else if (substr($href, 0, 2) == "./") {
+		$href = $scheme . "://" . $host . dirname(parse_url($url)['path']) . substr($href, 1);
+	} else if ((substr($href, 0, 5) != "https") && (substr($href, 0, 4) != "http")) {
+		$href = $scheme . "://" . $host . "/" . $href;
 	}
 
 	return $href;
 }
 
-function createImageLink($href,$url)
-{	
+function createImageLink($href, $url)
+{
 	$scheme = parse_url($url)['scheme']; // http or https
 	$host = parse_url($url)['host']; // www.w3schools.com
-	
+
 	if (isset(parse_url($url)['path'])) {
 		$path = dirname(parse_url($url)['path']);
 	}
-	
+
 
 	if (substr($href, 0, 2) == "//") {
-		$href = "http" . ":" . $href; 
-	}
-	else if (substr($href, 0, 1) == "/") {
-		$href = $scheme . "://" . $host . $href; 
-	}
-	else if (substr($href, 0, 3) == "../") {
-		$href = $scheme . "://" . $host . @$path . "/" . $href; 
-	}
-	else if (substr($href, 0, 2) == "./") {
-		$href = $scheme . "://" . $host . dirname(parse_url($url)['path']) . substr($href, 1); 
-	}
-	else if ((substr($href, 0, 5) != "https") && (substr($href, 0, 4) != "http")) {
-		$href = $scheme . "://" . $host . @$path . "/" . $href; 
+		$href = "http" . ":" . $href;
+	} else if (substr($href, 0, 1) == "/") {
+		$href = $scheme . "://" . $host . $href;
+	} else if (substr($href, 0, 3) == "../") {
+		$href = $scheme . "://" . $host . @$path . "/" . $href;
+	} else if (substr($href, 0, 2) == "./") {
+		$href = $scheme . "://" . $host . dirname(parse_url($url)['path']) . substr($href, 1);
+	} else if ((substr($href, 0, 5) != "https") && (substr($href, 0, 4) != "http")) {
+		$href = $scheme . "://" . $host . @$path . "/" . $href;
 	}
 
 	return $href;
 }
 
 function getDetails($url)
-{	
+{
 	global $alreadyFoundImages;
 
 	$parser = new DomDocumentParser($url);
@@ -146,11 +138,11 @@ function getDetails($url)
 
 	foreach ($metaArray as $meta) {
 
-		if (strcasecmp($meta->getAttribute('name'),"description") == 0) {
+		if (strcasecmp($meta->getAttribute('name'), "description") == 0) {
 			$description = $meta->getAttribute('content');
 		}
 
-		if (strcasecmp($meta->getAttribute('name'),"keywords") == 0) {
+		if (strcasecmp($meta->getAttribute('name'), "keywords") == 0) {
 			$keywords = $meta->getAttribute('content');
 		}
 	}
@@ -159,7 +151,7 @@ function getDetails($url)
 	$keywords = str_replace("\n", "", $keywords);
 
 	if (!checkExitsLink($url)) {
-		insertLink($url,$title,$description, $keywords);
+		insertLink($url, $title, $description, $keywords);
 		echo "SUCCESS! <br>";
 	}
 
@@ -170,7 +162,7 @@ function getDetails($url)
 		$src = $image->getAttribute('src');
 		$alt = $image->getAttribute('alt');
 
-		$src = createImageLink($src,$url);
+		$src = createImageLink($src, $url);
 
 		if (!in_array($src, $alreadyFoundImages)) {
 
@@ -180,7 +172,7 @@ function getDetails($url)
 
 				if (@getimagesize($src)) {
 
-					insertImages($src,$url,$alt,$title);
+					insertImages($src, $url, $alt, $title);
 					echo "insert <br>";
 				}
 			}
@@ -200,23 +192,21 @@ function followLinks($url)
 
 		$href = strtolower($link->getAttribute('href'));
 
-		if (substr($href,0,1) == "#") {
+		if (substr($href, 0, 1) == "#") {
 			continue;
-		}
-		elseif (substr($href,0,11) == "javascript:") {
+		} elseif (substr($href, 0, 11) == "javascript:") {
 			continue;
 		}
 
 		$href = createLink($href, $url);
 
 		if (!in_array($href, $alreadyCrawled)) {
-			
+
 			$alreadyCrawled[] = $href;
 			$crawling[] = $href;
 
 			getDetails($href);
-		}
-		else{
+		} else {
 			continue;
 		}
 	}
@@ -229,5 +219,5 @@ function followLinks($url)
 }
 
 
-$query = $con->query("SELECT * FROM sites WHERE crawled = 0", PDO::FETCH_ASSOC);
-var_dump($query);
+$query = $con->query("SELECT * FROM sites WHERE crawled = 0");
+var_dump($query->fetch());
