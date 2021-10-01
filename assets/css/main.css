@@ -1799,3 +1799,9 @@ span.flatpickr-weekday {
   border-bottom: 1px solid #333;
   padding: 10px 0;
 }
+
+.results-div a:not(.title-link), .results-div a:not(.title-link):hover, .results-div a:not(.title-link):visited {
+  color: #969696;
+  text-decoration: underline;
+  font-size: 12px;
+}
