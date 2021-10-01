@@ -223,11 +223,11 @@
 
 		    $.ajax({
 		    	type: 'POST',
-			    url: 'crawler.php',
+			    url: 'cron/queue.php',
 			    dataType:'html',
 			    data: { url:url },
 			    success:function(data,status){
-			    	$('#console').load('crawler.php');
+			    	$('#console').html('Submitted')
 			    }
 			  }).done(function(resp) {
 			    spinner.hide();

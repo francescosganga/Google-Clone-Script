@@ -8,8 +8,6 @@ if (!isset($_POST['url'])) {
 include('classes/parser.php');
 include('config/config.php');
 
-$url = $_POST['url'];
-
 $alreadyCrawled = array();
 $crawling = array();
 $alreadyFoundImages = array();
@@ -235,5 +233,5 @@ function followLinks($url)
 }
 
 
-
-followLinks($url);
+$query = $con->query("SELECT * FROM sites WHERE crawled = 0", PDO::FETCH_ASSOC);
+var_dump($query);
