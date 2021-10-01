@@ -23,25 +23,26 @@ if (!isset($_GET['q']) || $_GET['q'] == NULL) {
 	</form>
 	<!-- results -->
 	<div class="search-results">
-	<div class="result-showing-div">
-		<?php
-		$search_query = $_GET['q'];
+		<div class="left">
+			<div class="result-showing-div">
+				<?php
+				$search_query = $_GET['q'];
 
-		if ($_GET['search'] == 'images') {
+				if ($_GET['search'] == 'images') {
 
-			$resultsArray = getImageResults($search_query);
+					$resultsArray = getImageResults($search_query);
 
-			if (isset($resultsArray)) {
+					if (isset($resultsArray)) {
 
-				$counter = 0;
+						$counter = 0;
 
-				foreach ($resultsArray as $result) {
+						foreach ($resultsArray as $result) {
 
-					if ($counter < 50) {
+							if ($counter < 50) {
 
-						$host = parse_url($result['site_url'])['scheme'] . "://" . parse_url($result['site_url'])['host'];
+								$host = parse_url($result['site_url'])['scheme'] . "://" . parse_url($result['site_url'])['host'];
 
-						echo '
+								echo '
 				 			<div class="image-card">
 				 				<a href="' . $result['src'] . '" data-fancybox="gallery" data-caption="' . $result['title'] . '" data-siteurl="' . $result['site_url'] . '">
 				 					<div class="image-div">
@@ -56,83 +57,82 @@ if (!isset($_GET['q']) || $_GET['q'] == NULL) {
 				 				</a>
 				 			</div>
 				 		';
-					}
+							}
 
-					$counter++;
-				}
+							$counter++;
+						}
 
-				$_SESSION['resultsArraySession'] = array_slice($resultsArray, 50);
+						$_SESSION['resultsArraySession'] = array_slice($resultsArray, 50);
 
-				echo '
-					</div>
+						echo '
 					<div class="load-more-div">
 						<button class="load-more-btn" id="load-image-btn"> <i class="fas fa-angle-double-down"></i> Load More </button>
 					</div>
 				';
-			}
-		} else {
+					}
+				} else {
 
-			$resultsArray = getWebResults($search_query);
+					$resultsArray = getWebResults($search_query);
 
-			if (isset($resultsArray)) {
+					if (isset($resultsArray)) {
 
-				$_SESSION['token'] = md5(uniqid());
-				$counter = 0;
+						$_SESSION['token'] = md5(uniqid());
+						$counter = 0;
 
-				foreach ($resultsArray as $result) {
+						foreach ($resultsArray as $result) {
 
-					if ($counter < 20) {
+							if ($counter < 20) {
 
-						$url = project_url('redirect.php?token=') .  $_SESSION['token'] . "&url=" . $result['url'];
+								$url = project_url('redirect.php?token=') .  $_SESSION['token'] . "&url=" . $result['url'];
 
-						echo '
+								echo '
 					 		<div class="results-div">
 					 			<a href="' . $url . '" class="title-link">
 					 				<div class="title">
 					 				' .
-							$result['title']
-							. '
+									$result['title']
+									. '
 					 				</div>
 					 			</a>
 					 			<a href="' . $url . '">
 					 				<div class="website">
 					 					' .
-							$result['url']
-							. '
+									$result['url']
+									. '
 					 				</div>
 					 			</a>
 
 					 			<div class="web-description">
 					 				 ' .
-							$result['description']
-							. '
+									$result['description']
+									. '
 					 			</div>
 					 		</div>
 					 	';
-					}
+							}
 
-					$counter++;
-				}
+							$counter++;
+						}
 
-				$_SESSION['resultsArraySession'] = array_slice($resultsArray, 20);
+						$_SESSION['resultsArraySession'] = array_slice($resultsArray, 20);
 
-				echo '
+						echo '
 					<div class="load-more-div">
 						<button class="load-more-btn" id="load-web-btn"> <i class="fas fa-angle-double-down"></i> Load More </button>
 					</div>
 				';
-			}
-		}
-		?>
-
+					}
+				}
+				?>
+			</div>
+		</div>
+		<div class="sidebar">
+			b
+		</div>
 	</div>
-	<div class="sidebar">
-		b
-	</div>
-	</div>
+</div>
+<?php
 
-	<?php
-
-	$_SESSION['csrf_token'] = md5(uniqid());
-	?>
-	<?php include('layout/footer.php'); ?>
+$_SESSION['csrf_token'] = md5(uniqid());
+?>
+<?php include('layout/footer.php'); ?>
