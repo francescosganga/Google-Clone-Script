@@ -1,5 +1,6 @@
 <?php
-include("../config/config.php");
+if(file_exists("../config/config.php")) include("../config/config.php");
+else include("config/config.php");
 function project_url($path = NULL) {
 	global $config;	
 	if (substr($path,0,1) == "/") {
