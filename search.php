@@ -63,12 +63,6 @@ if (!isset($_GET['q']) || $_GET['q'] == NULL) {
 						}
 
 						$_SESSION['resultsArraySession'] = array_slice($resultsArray, 50);
-
-						echo '
-					<div class="load-more-div">
-						<button class="load-more-btn" id="load-image-btn"> <i class="fas fa-angle-double-down"></i> Load More </button>
-					</div>
-				';
 					}
 				} else {
 
@@ -115,16 +109,19 @@ if (!isset($_GET['q']) || $_GET['q'] == NULL) {
 						}
 
 						$_SESSION['resultsArraySession'] = array_slice($resultsArray, 20);
-
-						echo '
-					<div class="load-more-div">
-						<button class="load-more-btn" id="load-web-btn"> <i class="fas fa-angle-double-down"></i> Load More </button>
-					</div>
-				';
 					}
 				}
 				?>
 			</div>
+			<?php if($_GET['search'] === 'image'): ?>
+			<div class="load-more-div">
+				<button class="load-more-btn" id="load-image-btn"> <i class="fas fa-angle-double-down"></i> Load More </button>
+			</div>
+			<?php else: ?>
+			<div class="load-more-div">
+				<button class="load-more-btn" id="load-web-btn"> <i class="fas fa-angle-double-down"></i> Load More </button>
+			</div>
+			<?php endif ?>
 		</div>
 		<div class="sidebar">
 			b
