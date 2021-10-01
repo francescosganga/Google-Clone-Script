@@ -1,10 +1,6 @@
 <?php
 ob_start();
 
-if (!isset($_POST['url'])) {
-	die('Re enter your url');
-}
-
 include('classes/parser.php');
 include('config/config.php');
 
