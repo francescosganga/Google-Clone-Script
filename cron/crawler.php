@@ -220,5 +220,7 @@ function followLinks($url)
 
 
 $query = $con->query("SELECT * FROM sites WHERE crawled = 0");
-while($r = $query->fetch())
+while($r = $query->fetch()) {
 	followLinks($r['url']);
+	$con->query("UPDATE sites SET crawled = 1 WHERE url = '{$r['url']}'");
+}
