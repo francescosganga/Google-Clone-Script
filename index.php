@@ -13,7 +13,7 @@
 				<input autocomplete="off" id="search" type="text" name="q" placeholder="What are you looking for?" />
 			</div>
 			<div class="input-field fifth-wrap">
-				<button class="btn-search" type="button">SEARCH</button>
+				<button class="btn-search" type="submit">SEARCH</button>
 			</div>
 		</div>
 	</form>

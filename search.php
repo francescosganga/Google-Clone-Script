@@ -5,6 +5,7 @@ include('layout/header.php');
 include('config/config.php');
 include('helpers/search_helpers.php');
 
+if(!isset($_GET['search'])) $_GET['search'] = '';
 // -------------------------------------------------------------
 if (!isset($_GET['q']) || $_GET['q']==NULL) {
 	header("location:" . project_url());
