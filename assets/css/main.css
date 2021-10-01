@@ -1795,8 +1795,17 @@ span.flatpickr-weekday {
   }
 }
 
+.s002:not(.hp) form {
+  width: 80%;
+  max-width: 1440px;
+  margin: auto;
+}
+
 .search-results {
   display: flex;
+  width: 80%;
+  max-width: 1440px;
+  margin: auto;
 }
 
 .results-div {
